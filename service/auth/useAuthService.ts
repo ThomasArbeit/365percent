@@ -9,6 +9,7 @@ export default class useAuthService {
 
   public auth: Ref<User | null> = ref(null)
   public user: Ref<any | null> = ref(null)
+  public isLoading: Ref<boolean> = ref(false)  // nouvel état de chargement
 
   static getInstance(): useAuthService {
     if (!this.instance) {
@@ -17,36 +18,35 @@ export default class useAuthService {
     return this.instance
   }
 
-  // Méthode async à appeler pour init user et auth
   async init() {
+    this.isLoading.value = true
     const { $supabase } = useNuxtApp()
     const { data: { user }, error } = await $supabase.auth.getUser()
 
     if (error || !user) {
       this.auth.value = null
       this.user.value = null
+      this.isLoading.value = false
       return
     }
 
     this.auth.value = user
 
-    // Récupérer les infos personnalisées en base
     const { data: userData, error: userError } = await getUserById(user.id)
     if (!userError) {
       this.user.value = userData
     }
+    this.isLoading.value = false
   }
 
   async login(email: string, password: string) {
     const { data: userAuth } = await loginWithEmail(email, password)
-    this.auth.value = userAuth.user;
-    if ( userAuth.user?.id) {
-      const {data: userData} = await getUserById(userAuth.user?.id)
-      this.user.value = userData;
+    this.auth.value = userAuth.user
+    if (userAuth.user?.id) {
+      const { data: userData } = await getUserById(userAuth.user.id)
+      this.user.value = userData
     }
   }
 
-  private constructor() {
-    // Ne pas lancer init ici pour pouvoir await ailleurs
-  }
+  private constructor() {}
 }
