@@ -1,0 +1,19 @@
+@use 'variables' as *;
+
+.quest-sticker {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-sm;
+
+  &--isRunning {
+    color: $color-primary;
+  }
+
+  &__content {
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    flex: 1;
+  }
+} 

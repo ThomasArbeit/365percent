@@ -1,0 +1,29 @@
+@use 'variables' as *;
+
+.user-tag {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap:$space-xs;
+  }
+
+  &__pseudo {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    color: $text-color;
+  }
+
+  &__rank {
+    font-size: $font-size-sm;
+    color: $text-color-secondary;
+  }
+
+  img {
+    height: $space-3xl;
+    width: $space-3xl;
+  }
+}

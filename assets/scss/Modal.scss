@@ -1,0 +1,46 @@
+@use 'variables' as *;
+
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.bottom-sheet {
+  width: 100%;
+  background: $background-color;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  max-height: 90vh;
+  height: 90vh;
+  overflow: auto;
+  transition: transform 0.3s ease;
+  will-change: transform;
+  // padding: 1rem;
+}
+
+.sheet-content {
+  padding: $space-lg;
+  padding-bottom: calc($space-3xl + $space-3xl);
+  max-height: calc(90vh );
+  overflow-y: auto;
+}
+
+/* Animations */
+.modal-slide-enter-active,
+.modal-slide-leave-active {
+  transition: all 0.3s ease;
+}
+
+.modal-slide-enter-from {
+  transform: translateY(100%);
+}
+
+.modal-slide-leave-to {
+  transform: translateY(100%);
+}

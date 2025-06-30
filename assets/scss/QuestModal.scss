@@ -1,0 +1,16 @@
+@use 'variables' as *;
+
+.quest-modal {
+  &__actions {
+    position: fixed;
+    bottom: $space-xs;
+    left: $space-lg;
+    right: $space-lg;
+    display: flex;
+    gap: $space-sm;
+
+    .button {
+      flex: 1;
+    }
+  }
+}

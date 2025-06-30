@@ -1,0 +1,62 @@
+@use 'variables' as *;
+
+.footer-player {
+  position: fixed;
+  bottom: $space-sm;
+  right: $space-sm;
+  left: $space-sm;
+  border-radius: $radius-lg;
+  background-color: $color-secondary;
+  padding: $space-lg;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-lg;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(100%);
+  transition: transform 0.4s ease, opacity 0.4s ease, background .2s ease-in-out;
+  opacity: 0;
+  z-index: 49;
+
+  &--playing {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  &--paused {
+    background: $color-tertiary;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $space-xs;
+  }
+
+  &__title {
+    font-weight: $font-weight-medium;
+  }
+
+  &__title, &__description {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: $text-color-secondary;
+  }
+
+  &__time {
+    color: $text-color-secondary;
+  }
+
+  &__actions {
+    min-width: 112px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: end;
+    flex: 1;
+    gap: $space-md;
+  }
+}

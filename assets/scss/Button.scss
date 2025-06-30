@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: $space-lg;
+  background: $color-primary;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  border-radius: $radius-lg;
+  outline: unset;
+  border: unset;
+  line-height: $space-xl;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  
+  &--secondary {
+    background: rgba(255,255,255, .1);
+    color: white;
+  }
+  
+  &--placeholder {
+    padding: $space-md;
+    background: rgba(255,255,255, .04);
+    color: $text-color-secondary;
+    font-weight: $font-weight-regular;
+    border: dashed 1px rgba(255,255,255, .1);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:active {
+    transform: translateY($space-xs);
+  }
+}

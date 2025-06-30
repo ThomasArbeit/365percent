@@ -1,0 +1,92 @@
+// ==============================
+// 🎨 Couleurs
+// ==============================
+
+// Principales
+$color-primary: #A46AEE;
+$color-secondary: #5D3C87;
+$color-tertiary: #3A2554;
+$color-surface: rgba(255,255,255,.06);
+
+// Neutres
+$color-black: #000000;
+$color-white: #ffffff;
+$color-gray-100: #f3f4f6;
+$color-gray-300: #d1d5db;
+$color-gray-500: #6b7280;
+$color-gray-700: #374151;
+$color-gray-900: #111827;
+
+// États
+$color-success: #10b981;
+$color-warning: #f59e0b;
+$color-error:   #ef4444;
+$color-info:    #3b82f6;
+
+// Fond & texte
+$background-color: #131215;
+$text-color: white;
+$text-color-secondary: rgba(255,255,255,.7);
+$text-color-tertiary: rgba(255,255,255,.5);
+$text-color-quartiary: rgba(255,255,255,.3);
+
+// ==============================
+// 🧱 Spacings
+// ==============================
+
+$space-xs: 4px;
+$space-sm: 8px;
+$space-md: 16px;
+$space-lg: 20px;
+$space-xl: 24px;
+$space-2xl: 32px;
+$space-3xl: 48px;
+
+// ==============================
+// ✍️ Typographie
+// ==============================
+
+$font-body: 'Space Grotesk';
+$font-heading: 'Space Grotesk';
+
+$font-size-sm: 0.75rem;  // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem;   // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem;  // 20px
+$font-size-2xl: 1.5rem;  // 24px
+$font-size-3xl: 1.875rem;// 30px
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+
+// ==============================
+// 📱 Breakpoints
+// ==============================
+
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-2xl: 1536px;
+
+// ==============================
+// 🔲 Border Radius
+// ==============================
+
+$radius-xxs: 2px;
+$radius-xs: 4px;
+$radius-sm: 6px;
+$radius-md: 8px;
+$radius-lg: 16px;
+$radius-xl: 24px;
+$radius-full: 9999px;
+
+// ==============================
+// 🌫️ Ombres
+// ==============================
+
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);

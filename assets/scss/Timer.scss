@@ -1,0 +1,52 @@
+@use 'variables' as *;
+
+.timer {
+  display: flex;
+  gap: $space-xs;
+  // justify-content: flex-end;
+  align-items: center;
+
+  &__icon {
+    min-width: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__time {
+    color: $color-primary;
+    min-width: 72px;
+    opacity: 0;
+    transform: translateX(20px);
+    animation: slideFadeIn 0.4s forwards;
+
+    &--hide {
+      opacity: 1;
+      transform: translateX(0);
+      animation: slideFadeOut 0.4s forwards;
+    }
+  }
+
+}
+
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideFadeOut {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+}

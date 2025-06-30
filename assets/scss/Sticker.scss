@@ -1,0 +1,7 @@
+@use 'variables' as *;
+
+.sticker {
+  border-radius: $radius-lg;
+  background: rgba(255,255,255,.06);
+  padding: $space-lg $space-xl;
+}

@@ -1,0 +1,11 @@
+@use 'variables' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: $space-md;
+  h2 {
+    font-size: $font-size-base;
+    color: $text-color;
+  }
+}

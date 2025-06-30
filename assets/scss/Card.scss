@@ -1,0 +1,8 @@
+@use 'variables' as *;
+
+.card {
+  border-radius: $radius-lg;
+  background-color: $color-surface;
+  overflow: hidden;
+  padding: $space-xl;
+}

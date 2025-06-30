@@ -1,0 +1,22 @@
+@use 'variables' as *;
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  &__label {
+    color: $text-color-tertiary;
+  }
+
+  input, textarea {
+    color: $text-color;
+    outline: unset;
+    border: unset;
+    font-size: $font-size-base;
+    background-color: unset;
+    line-height: $space-xl;
+    height: auto;
+    resize: none;
+  }
+}

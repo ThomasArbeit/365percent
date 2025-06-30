@@ -1,0 +1,40 @@
+@use 'variables' as *;
+@use 'Button.scss';
+@use 'Card.scss';
+@use 'Input.scss';
+@use 'Sticker.scss';
+@use 'Section.scss';
+@use 'UserTag.scss';
+@use 'Modal.scss';
+@use 'QuestModal.scss';
+@use 'QuestSticker.scss';
+@use 'FooterPlayer.scss';
+@use 'Timer.scss';
+
+* {
+  padding: unset;
+  margin: unset;
+  box-sizing: border-box;
+  font-family: 'Space Grotesk';
+  overflow-x: hidden;
+}
+
+#nuxt-devtools-inspect-panel {
+  display: none;
+}
+
+body {
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+.gap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  &--page {
+    gap: $space-xl;
+  }
+}
