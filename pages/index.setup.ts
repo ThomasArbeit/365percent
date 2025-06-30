@@ -1,4 +1,4 @@
-import { getQuestsByUserId } from "~/api/quest/getQuests";
+import { getQuestsByUserId } from "~/utils/quest/getQuests";
 import type { QuestModalSetupProps } from "~/components/app/quest/QuestModal.setup";
 import QuestEntity from "~/models/entities/QuestEntity";
 import type { QuestType } from "~/models/types/QuestType";

@@ -1,6 +1,6 @@
 import type { QuestModalSetupProps } from "~/components/app/quest/QuestModal.setup";
 import { BaseEntity } from "./BaseEntity";
-import { addQuest } from "~/api/quest/addQuest";
+import { addQuest } from "~/utils/quest/addQuest";
 import usePlayingQuestService from "~/service/quest/usePlayingQuestService";
 import {ref} from 'vue';
 import type { QuestType } from "../types/QuestType";

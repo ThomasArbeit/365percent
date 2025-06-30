@@ -1,8 +1,8 @@
 // ~/service/auth/useAuthService.ts
 import { ref, type Ref } from 'vue'
 import type { User } from '@supabase/supabase-js'
-import { getUserById } from '~/api/user/getUserById'
-import { loginWithEmail } from '~/api/auth/login'
+import { getUserById } from '~/utils/user/getUserById'
+import { loginWithEmail } from '~/utils/auth/login'
 
 export default class useAuthService {
   private static instance: useAuthService | null = null
