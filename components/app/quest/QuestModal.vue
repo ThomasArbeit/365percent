@@ -9,7 +9,7 @@ import TextArea from '~/components/ui/textarea/TextArea.vue';
 
 <template>
   <div class="quest-modal gap gap--page" v-if="setup.quest">
-    <Input type="text" label="Quete" v-model="setup.quest.title" placeholder="Ex : Nouvelle super quête "/>
+    <Input type="text" size="xl" label="Quete" v-model="setup.quest.title" placeholder="Ex : Nouvelle super quête "/>
     <TextArea type="text" label="Description" v-model="setup.quest.description" placeholder="Ex : Cette quete est fait pour apprendre une nouvelle chose, maintenir une habitude"/>
     <Input type="text" label="Etapes de quête" v-model="setup.quest.domain" placeholder="Ajoutez une étape"/>
     <Input type="text" label="Categorie(s)" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/>

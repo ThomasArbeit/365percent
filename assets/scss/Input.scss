@@ -7,6 +7,7 @@
 
   &__label {
     color: $text-color-tertiary;
+    font-size: $font-size-sm;
   }
 
   input, textarea {
@@ -18,5 +19,13 @@
     line-height: $space-xl;
     height: auto;
     resize: none;
+  }
+  
+  &--xl {
+    input {
+      color: $text-color;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-medium;
+    }
   }
 }

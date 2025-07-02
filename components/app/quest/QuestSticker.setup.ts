@@ -11,12 +11,19 @@ export default class QuestStickerSetup extends BaseSetup<QuestStickerProps, Ques
 
   constructor(props: QuestStickerProps, emits: QuestStickerEmit) {
     super(props,emits);
+    // console.log(props.duration_seconds);
     this.quest = new QuestEntity(props);
   }
 
   get isSameQuestAsRunning () {
-    if (this.playingQuest.quest) {
-      return this.quest.id === this.playingQuest.questId.value;
-    }
+    return this.quest.id === this.playingQuest.questId.value;
+  }
+
+  protected override onMounted(): void {
+    watch(this.playingQuest.questId, (val) => {
+      if (this.isSameQuestAsRunning && this.playingQuest.quest) {
+        this.quest = this.playingQuest.quest;
+      }
+    })
   }
 }

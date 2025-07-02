@@ -1,4 +1,3 @@
-import type { QuestModalSetupProps } from "~/components/app/quest/QuestModal.setup";
 import type { QuestType } from "~/models/types/QuestType";
 
 export async function addQuest (quest: QuestType, userId: string) {

@@ -11,6 +11,10 @@ export default class useAuthService {
   public user: Ref<any | null> = ref(null)
   public isLoading: Ref<boolean> = ref(false)  // nouvel état de chargement
 
+  get userId () {
+    return this.user.value.id;
+  }
+
   static getInstance(): useAuthService {
     if (!this.instance) {
       this.instance = new useAuthService()

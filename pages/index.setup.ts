@@ -17,7 +17,8 @@ export default class IndexSetup extends BaseSetup<IndexSetupProps, IndexSetupEmi
 
   openModalQuest (quest?: QuestEntity) {
     this.showModal.value = true;
-    this.selectedQuest.value = quest;
+    if (quest) this.selectedQuest.value = quest;
+    else this.selectedQuest.value = new QuestEntity({});
   }
 
   constructor(){
@@ -26,9 +27,10 @@ export default class IndexSetup extends BaseSetup<IndexSetupProps, IndexSetupEmi
   }
 
   protected override async onMounted() {
-  if (this.self?.user?.value?.id) {
-    const { data } = await getQuestsByUserId(this.self.user.value.id);
+  if (this.self.userId) {
+    const { data } = await getQuestsByUserId(this.self.userId);
     this.quests.value = data;
+    this.playingQuest.getPlayingQuest(this.self.userId)
   } else {
     console.warn("User non initialisé");
   }

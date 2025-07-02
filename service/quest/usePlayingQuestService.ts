@@ -1,4 +1,6 @@
-import type QuestEntity from "~/models/entities/QuestEntity";
+import QuestEntity from "~/models/entities/QuestEntity";
+import type { QuestType } from "~/models/types/QuestType";
+import { getPlayingQuest } from "~/utils/quest/getPlayingQuest";
 
 export default class usePlayingQuestService {
   private static instance: usePlayingQuestService | null = null;
@@ -28,5 +30,17 @@ export default class usePlayingQuestService {
     this.quest = undefined;
     this.questId.value = undefined;
     this.hasQuest.value = false;
+  }
+
+
+  async getPlayingQuest (userId: QuestEntity['userId']) {
+    const { data } = await getPlayingQuest(userId);
+    if (data) {
+      this.quest = new QuestEntity(data as QuestType);
+      this.quest.durationSeconds = getSecondsSince(data.started_at) + data.duration_seconds;
+      this.quest.start();
+      this.hasQuest.value = true;
+      this.questId.value = this.quest.id;
+    }
   }
 }

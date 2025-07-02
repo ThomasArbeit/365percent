@@ -13,3 +13,12 @@ export function formatTime(seconds: number): string {
     return `0:${formattedSecs}`
   }
 }
+
+
+export function getSecondsSince(timestamp: string): number {
+  const date = new Date(timestamp);
+  const now = new Date();
+
+  const diffMs = now.getTime() - date.getTime();
+  return Math.floor(diffMs / 1000);
+}

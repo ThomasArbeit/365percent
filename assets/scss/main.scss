@@ -10,13 +10,13 @@
 @use 'QuestSticker.scss';
 @use 'FooterPlayer.scss';
 @use 'Timer.scss';
+@use 'DashboardCard.scss';
 
 * {
   padding: unset;
   margin: unset;
   box-sizing: border-box;
   font-family: 'Space Grotesk';
-  overflow-x: hidden;
 }
 
 #nuxt-devtools-inspect-panel {
@@ -27,7 +27,7 @@ body {
   background-color: $background-color;
   color: $text-color;
   padding: 20px;
-  overflow-x: hidden;
+  padding-bottom: 124px;
 }
 
 .gap {

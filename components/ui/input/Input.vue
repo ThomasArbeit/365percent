@@ -1,5 +1,5 @@
 <template>
-  <div :class="['input', `input--${props.variant}`]">
+  <div :class="['input', `input--${props.variant}`, `input--${props.size}`]">
     <label class="input__label" v-if="props.label">{{ props.label }}</label>
     <input
       :type="props.type"

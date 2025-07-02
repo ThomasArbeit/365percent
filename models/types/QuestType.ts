@@ -4,10 +4,12 @@ export type QuestType = {
   domain?: string,
   title?: string,
   description?: string,
-  xpReward?: number,
-  durationMinutes?: number,
+  xp_reward?: number,
+  duration_seconds?: number,
   status?: number,
-  scheduledAt?: string,
-  completedAt?: string,
-  createdAt?: string
+  scheduled_at?: string,
+  completed_at?: string,
+  created_at?: string,
+  paused_at?: string,
+  started_at?: string,
 }

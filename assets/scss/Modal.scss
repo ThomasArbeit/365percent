@@ -14,14 +14,13 @@
 .bottom-sheet {
   width: 100%;
   background: $background-color;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
+  border-top-left-radius: $space-lg;
+  border-top-right-radius: $space-lg;
   max-height: 90vh;
   height: 90vh;
   overflow: auto;
   transition: transform 0.3s ease;
   will-change: transform;
-  // padding: 1rem;
 }
 
 .sheet-content {

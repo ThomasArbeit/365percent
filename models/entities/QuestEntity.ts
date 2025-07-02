@@ -4,16 +4,18 @@ import { addQuest } from "~/utils/quest/addQuest";
 import usePlayingQuestService from "~/service/quest/usePlayingQuestService";
 import {ref} from 'vue';
 import type { QuestType } from "../types/QuestType";
+import { startQuest } from "~/utils/quest/startQuest";
+import { pauseQuest } from "~/utils/quest/pauseQuest";
 
 export default class QuestEntity extends BaseEntity<QuestType> {
   isRunning = ref(false)
-  elapsed = ref(0) // en secondes
   interval: ReturnType<typeof setInterval> | null = null
   wasRunning = ref(false);
 
   constructor(quest: QuestType) {
     super(quest);
   }
+
   public get title() : string | undefined {
     return this.data.title;
   }
@@ -35,18 +37,26 @@ export default class QuestEntity extends BaseEntity<QuestType> {
     this.data.domain = v;
   }
 
+  public get durationSeconds() : number{
+    return this.data.duration_seconds ?? 0;
+  }
+  public set durationSeconds(v : number) {
+    this.data.duration_seconds = v;
+  }
+
   public get formattedTime () {
-    return formatTime(this.elapsed.value);
+    return formatTime(this.durationSeconds);
   }
 
   async addQuestAsync () { 
-    const response = await addQuest(this.data, this.self.user.value.id);
+    const response = await addQuest(this.data, this.userId);
     this.id = response.data?.[0].id;
   }
 
-  startQuest () {
+  async startQuest () {
     const service = usePlayingQuestService.getInstance();
     service.setPlayingQuest(this)
+    await startQuest(this.id, this.userId);
     this.toggle();
   }
   
@@ -61,11 +71,12 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   start () {
     this.isRunning.value = true
     this.interval = setInterval(() => {
-      this.elapsed.value++
+      this.durationSeconds++;
     }, 1000)
   }
   
-  stop () {
+  async stop () {
+    await pauseQuest(this.id, this.userId, this.durationSeconds);
     this.isRunning.value = false
     if (this.interval) {
       clearInterval(this.interval)
