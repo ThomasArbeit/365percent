@@ -17,7 +17,7 @@ export class BaseEntity<T extends RawEntity> {
   get isNew () { return !this.id; }
 
   get userId() {
-    return this.self.user?.value.id;
+    return this.self.userData.id;
   }
 
   constructor(initialData?: T) {

@@ -37,7 +37,7 @@ export default class usePlayingQuestService {
     const { data } = await getPlayingQuest(userId);
     if (data) {
       this.quest = new QuestEntity(data as QuestType);
-      this.quest.durationSeconds = getSecondsSince(data.started_at) + data.duration_seconds;
+      this.quest.durationSeconds = data.paused_at ? data.duration_seconds : getSecondsSince(data.started_at)
       this.quest.start();
       this.hasQuest.value = true;
       this.questId.value = this.quest.id;

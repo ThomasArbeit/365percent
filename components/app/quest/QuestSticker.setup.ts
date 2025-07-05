@@ -11,7 +11,6 @@ export default class QuestStickerSetup extends BaseSetup<QuestStickerProps, Ques
 
   constructor(props: QuestStickerProps, emits: QuestStickerEmit) {
     super(props,emits);
-    // console.log(props.duration_seconds);
     this.quest = new QuestEntity(props);
   }
 

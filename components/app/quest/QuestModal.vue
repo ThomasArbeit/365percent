@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 import Input from '~/components/ui/input/Input.vue';
-import { QuestModalSetup, type QuestModalSetupProps } from './QuestModal.setup';
+import { QuestModalSetup, type QuestModalSetupEmit, type QuestModalSetupProps } from './QuestModal.setup';
 import Button from '~/components/ui/button/Button.vue';
 import TextArea from '~/components/ui/textarea/TextArea.vue';
+  const emits = defineEmits<QuestModalSetupEmit>(); 
   const props = defineProps<QuestModalSetupProps>();
-  const setup = new QuestModalSetup(props);
+  const setup = new QuestModalSetup(props, emits);
 </script>
 
 <template>
@@ -15,8 +16,8 @@ import TextArea from '~/components/ui/textarea/TextArea.vue';
     <Input type="text" label="Categorie(s)" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/>
     <!-- <Input type="date" label="A réaliser pour" v-model="setup.quest.tag" placeholder="Ajoutez une date"/> -->
     <div class="quest-modal__actions">
-      <Button v-if="setup.quest.isNew" label="Sauvegarder" @click="setup.quest.addQuestAsync()"/>
-      <Button v-else label="Commencer"/>
+      <Button v-if="setup.quest.isNew" label="Sauvegarder" @click="setup.addQuest()"/>
+      <Button v-else label="Commencer" @click="setup.quest.startQuest()"/>
     </div>
   </div>
 </template>

@@ -11,7 +11,7 @@ const setup = new QuestStickerSetup(props, emits);
 
 <template>
   <Sticker
-  @click="setup.emits('click', setup.quest)">
+  @click="setup.emits?.('click', setup.quest)">
     <div :class="['quest-sticker', `${setup.isSameQuestAsRunning ? 'quest-sticker--isRunning' : '' }`]">
       <div class="quest-sticker__content">
         {{ setup.quest.title }}

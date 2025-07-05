@@ -1,16 +1,22 @@
-import type { User } from "@supabase/supabase-js";
-import type QuestEntity from "~/models/entities/QuestEntity";
+import QuestEntity from "~/models/entities/QuestEntity";
+import type { QuestType } from "~/models/types/QuestType";
 import { BaseSetup } from "~/setup/BaseSetup";
-export type QuestModalSetupProps = {
-  modelValue: QuestEntity,
+export type QuestModalSetupProps = { entity: QuestEntity }
+export type QuestModalSetupEmit = {
+  (event: 'add', newQuest: any): void, 
+  (event: 'start'): void
 }
-export type QuestModalSetupEmit = [(event: 'add') => void, (event: 'start') => void]
 
 export class QuestModalSetup extends BaseSetup<QuestModalSetupProps, QuestModalSetupEmit> {
-  quest?: QuestEntity;
+  quest: QuestEntity
 
-  constructor(props?: QuestModalSetupProps) {
-    super(props);
-    if(props) this.quest = props.modelValue;
+  constructor(props: QuestModalSetupProps, emits: QuestModalSetupEmit) {
+    super(props, emits);
+    this.quest = this.props.entity;
+  }
+
+  async addQuest() {
+    const response = await this.quest.addQuestAsync();
+    this.emits?.('add', response);
   }
 }

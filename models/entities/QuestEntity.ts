@@ -1,4 +1,3 @@
-import type { QuestModalSetupProps } from "~/components/app/quest/QuestModal.setup";
 import { BaseEntity } from "./BaseEntity";
 import { addQuest } from "~/utils/quest/addQuest";
 import usePlayingQuestService from "~/service/quest/usePlayingQuestService";
@@ -11,9 +10,12 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   isRunning = ref(false)
   interval: ReturnType<typeof setInterval> | null = null
   wasRunning = ref(false);
+  timeInterval = ref(0);
 
-  constructor(quest: QuestType) {
-    super(quest);
+  constructor(quest?: QuestType) {
+    super();
+    if (quest) this.assignData(quest);
+    this.setTimeInterval();
   }
 
   public get title() : string | undefined {
@@ -45,38 +47,46 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   }
 
   public get formattedTime () {
-    return formatTime(this.durationSeconds);
+    return formatTime(this.timeInterval.value);
   }
 
   async addQuestAsync () { 
     const response = await addQuest(this.data, this.userId);
     this.id = response.data?.[0].id;
+    return response.data?.[0];
   }
 
   async startQuest () {
     const service = usePlayingQuestService.getInstance();
     service.setPlayingQuest(this)
-    await startQuest(this.id, this.userId);
-    this.toggle();
+    await this.toggle();
   }
   
-  toggle () {
+  async toggle () {
     if (this.isRunning.value) {
-      this.stop()
+      await this.stop()
     } else {
-      this.start()
+      this.data.started_at = new Date().toISOString();
+      this.setTimeInterval();
+      await this.start()
+      await startQuest(this.id, this.userId);
     }
   }
+
+  setTimeInterval () {
+    this.timeInterval.value = Math.floor((Date.now() - new Date(this.data.started_at ?? new Date()).getTime()) / 1000) + (this.data.duration_seconds ?? 0);
+  }
   
-  start () {
+  async start () {
     this.isRunning.value = true
     this.interval = setInterval(() => {
-      this.durationSeconds++;
+      this.setTimeInterval();
     }, 1000)
   }
   
   async stop () {
-    await pauseQuest(this.id, this.userId, this.durationSeconds);
+    await pauseQuest(this.id, this.userId, this.timeInterval.value);
+    this.data.duration_seconds = this.timeInterval.value;
     this.isRunning.value = false
     if (this.interval) {
       clearInterval(this.interval)

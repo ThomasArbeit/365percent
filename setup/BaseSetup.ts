@@ -7,14 +7,14 @@ declare global {
 
 export class BaseSetup<P, E> {
 props = {} as P;
-emits = null as E;
+emits?: E;
 self = useAuthService.getInstance();
 playingQuest = usePlayingQuestService.getInstance();
 public router = useRouter();
 
 constructor(props?: P, emits?: E) {
   this.props = props ?? {} as P;
-  this.emits = emits ?? null as E;
+  this.emits = emits;
   this.initHooks();
 }
 

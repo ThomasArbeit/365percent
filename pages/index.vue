@@ -26,9 +26,7 @@ const setup = new IndexSetup();
       <Button @click="setup.openModalQuest()" label="Ajouter une quete" variant="placeholder"/>
     </Section>
     <Modal v-show="setup.showModal.value" :show="setup.showModal.value" @close="setup.closeModal()">
-      <template v-if="setup.selectedQuest.value !== undefined">
-        <QuestModal v-model="setup.selectedQuest.value"/>
-      </template>
+      <QuestModal @add="(e:any) => setup.addQuestToList(e)" :entity="setup.selectedQuest" />
     </Modal>
     <FooterPlayer @click="(e) => setup.openModalQuest(e)"/>
   </div>

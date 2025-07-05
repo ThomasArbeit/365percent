@@ -15,6 +15,10 @@ export default class useAuthService {
     return this.user.value.id;
   }
 
+  get userData () {
+    return this.user.value;
+  }
+
   static getInstance(): useAuthService {
     if (!this.instance) {
       this.instance = new useAuthService()

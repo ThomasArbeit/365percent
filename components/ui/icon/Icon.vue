@@ -7,6 +7,7 @@ const setup = new IconSetup(props);
 
 <template>
   <component
+    class="icon"
     :is="setup.icon"
     :size="props.size"
     :color="props.color"

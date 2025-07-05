@@ -11,6 +11,7 @@
           @touchend="setup.onTouchEnd()"
         >
           <div :ref="setup.content" class="sheet-content">
+            <div class="sheet-content__closer"/>
             <slot />
           </div>
         </div>
