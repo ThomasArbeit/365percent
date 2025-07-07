@@ -14,6 +14,7 @@ const setup = new QuestStickerSetup(props, emits);
   @click="setup.emits?.('click', setup.quest)">
     <div :class="['quest-sticker', `${setup.isSameQuestAsRunning ? 'quest-sticker--isRunning' : '' }`]">
       <div class="quest-sticker__content">
+        <div class="quest-sticker__circle"/>
         {{ setup.quest.title }}
       </div>
         <Icon :name="setup.quest.isRunning.value ? 'Pause' : 'Play'" 

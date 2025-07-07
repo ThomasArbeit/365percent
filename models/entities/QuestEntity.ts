@@ -68,7 +68,7 @@ export default class QuestEntity extends BaseEntity<QuestType> {
     } else {
       this.data.started_at = new Date().toISOString();
       this.setTimeInterval();
-      await this.start()
+      await this.start();
       await startQuest(this.id, this.userId);
     }
   }

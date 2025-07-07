@@ -19,4 +19,16 @@ export class QuestModalSetup extends BaseSetup<QuestModalSetupProps, QuestModalS
     const response = await this.quest.addQuestAsync();
     this.emits?.('add', response);
   }
+
+  get isSameQuestAsRunning () {
+    return this.quest.id === this.playingQuest.questId.value;
+  }
+
+  protected override onMounted(): void {
+    watch(this.playingQuest.questId, (val) => {
+      if (this.isSameQuestAsRunning && this.playingQuest.quest) {
+        this.quest = this.playingQuest.quest;
+      }
+    })
+  }
 }

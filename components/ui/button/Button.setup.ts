@@ -1,6 +1,9 @@
 export type ButtonProps = {
   label: string,
-  variant?: 'secondary' | 'placeholder'
+  variant?: 'secondary' | 'placeholder',
+  iconLeft?: string,
+  iconRight?: string,
+  fillIcon?: boolean,
 }
 
 

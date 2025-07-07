@@ -10,6 +10,9 @@
     .quest-sticker__content {
       color: $color-primary ;
     }
+    .quest-sticker__circle {
+      border: 1px solid $color-primary;
+    }
   }
 
   &__content {
@@ -18,5 +21,16 @@
     display: flex;
     flex: 1;
     color: $text-color-secondary;
+    align-items: center;
+    gap: $space-md;
+  }
+
+  &__circle {
+    border-radius: $radius-full;
+    border: 1px solid rgba(255,255,255,.1);
+    background-color: rgba(255,255,255,.08);
+    width: calc($space-xl + $space-xs);
+    height: calc($space-xl + $space-xs);
+    transition: border .3s ease-in-out;
   }
 } 

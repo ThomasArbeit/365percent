@@ -65,7 +65,7 @@
     background: $color-secondary;
     z-index: 2;
     height: 100%;
-    padding-right: $space-lg;
+    padding: 0 $space-lg 0 $space-sm;
     right: 0;
     
     &::before {
