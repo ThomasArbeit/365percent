@@ -12,7 +12,7 @@
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    padding-top: 300px;
+    padding-top: 60px;
 
     .button {
       flex: 1;
@@ -26,7 +26,7 @@
 
   &__timer {
     font-size: $font-size-3xl;
-    margin-bottom: $space-md;
+    margin-bottom: $space-lg;
   }
 
   &__buttons {
@@ -37,27 +37,27 @@
   }
 
   &__chrono {
-    opacity: .3;
     position: absolute;
     width: 200px;
     height: 200px;
-    top: 500px;
+    top: 270px;
     pointer-events: none;
     transition: .3s ease-in;
   }
 
   &__bar {
     position: absolute;
-    width: .5px;
+    width: 1px;
     height: 5px;
-    background: white;
+    background: rgba(255,255,255,.1);
     top: 50%;
     left: 50%;
     transform-origin: center center;
     border-radius: $radius-full;
-
+    
     &--big {
-      height: 6px;
+      // height: 7x;
+      background: rgba(255,255,255,.5);
       width: 1px;
     }
   }

@@ -16,7 +16,7 @@ import TextArea from '~/components/ui/textarea/TextArea.vue';
     <Input type="text" label="Categorie(s)" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/>
     <!-- <Input type="date" label="A réaliser pour" v-model="setup.quest.tag" placeholder="Ajoutez une date"/> -->
     <div class="quest-modal__actions">
-      <div class="quest-modal__chrono" v-if="setup.quest.isRunning.value" :style="{ transform: `scale(4) rotate(${setup.quest.timeInterval.value * 6}deg)` }">
+      <div class="quest-modal__chrono" v-if="setup.quest.isRunning.value" :style="{ transform: `scale(4) rotate(${setup.quest.timeInterval.value * -6}deg)` }">
         <div :class="['quest-modal__bar', `${(i === 60 || i % 5 === 0) ? 'quest-modal__bar--big' : null}`]" v-for="i in 60" :key="i" :style="{ transform: `rotate(${i * 6}deg) translateY(-90px)` }"/>
       </div>
       <p class="quest-modal__timer" v-if="setup.isSameQuestAsRunning">{{ setup.quest.formattedTime }}</p>
