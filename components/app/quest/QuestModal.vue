@@ -14,8 +14,8 @@ import TextArea from '~/components/ui/textarea/TextArea.vue';
     <Input type="text" size="xl" label="Quete" v-model="setup.quest.title" placeholder="Ex : Nouvelle super quête "/>
     <TextArea type="text" label="Description" v-model="setup.quest.description" placeholder="Ex : Cette quete est fait pour apprendre une nouvelle chose, maintenir une habitude"/>
     <!-- <Input type="text" label="Etapes de quête" v-model="setup.quest.domain" placeholder="Ajoutez une étape"/> -->
-    <Input type="text" label="Categorie(s)" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/>
-    <!-- <Select label="Categorie(s)" v-model="setup.quest.domain"/> -->
+    <!-- <Input type="text" label="Categorie(s)" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/> -->
+    <Select label="Categorie(s)" :options="setup.userDomainOptions.value" option-key="id" option-label="domain" option-value="id" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/>
     <!-- <Input type="date" label="A réaliser pour" v-model="setup.quest.tag" placeholder="Ajoutez une date"/> -->
     <div class="quest-modal__actions">
       <div class="quest-modal__chrono" v-if="setup.quest.isRunning.value" :style="{ transform: `scale(4) rotate(${setup.quest.timeInterval.value * -6}deg)` }">

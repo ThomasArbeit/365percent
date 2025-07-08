@@ -32,8 +32,8 @@ export default class QuestEntity extends BaseEntity<QuestType> {
     this.data.description = v;
   }
 
-  public get domain() : string | undefined {
-    return this.data.domain;
+  public get domain() : string | null {
+    return this.data.domain ?? null;
   }
   public set domain(v : string) {
     this.data.domain = v;

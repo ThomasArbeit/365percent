@@ -1,0 +1,20 @@
+@use 'variables' as *;
+
+.tag {
+  padding: $space-xs calc($space-xs + $space-sm);
+  border-radius: $radius-md;
+  background: #39383B;
+  line-height: $font-size-2xl;
+  display: flex;
+  flex-grow: 0;
+  gap: $space-sm;
+  align-items: center;
+  width: fit-content;
+
+  &__circle {
+    height: 6px;
+    width: 6px;
+    background: white;
+    border-radius: $radius-full;
+  }
+}

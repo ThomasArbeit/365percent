@@ -27,6 +27,7 @@
 .sheet-content {
   padding: $space-lg;
   padding-bottom: calc($space-3xl + $space-3xl);
+  min-height: 100%;
   max-height: 82vh;
   overflow-y: auto;
 

@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: $space-sm;
+  position: relative;
 
   &__label {
     color: $text-color-tertiary;
@@ -19,6 +20,7 @@
     line-height: $space-xl;
     height: auto;
     resize: none;
+    position: relative;
   }
   
   &--xl {
@@ -28,10 +30,36 @@
       font-weight: $font-weight-medium;
     }
   }
+
+  &__popover {
+    position: absolute;
+    background: #212023;
+    width: 100%;
+    top: calc(100% + $space-sm);
+    z-index: 100;
+    list-style-type: none;
+    padding: $space-sm;
+    border-radius: $radius-md;
+  }
+
+  &__popover-option {
+    padding: $space-sm;
+    cursor: pointer;
+    border-radius: $space-xs;
+
+   &:hover {
+    background: rgba(255,255,255, .06);
+   }
+  }
+
+  &__tag-section {
+    display: flex;
+    align-items: center;
+    gap: $space-xs;
+  }
 }
 
-.tag {
-  padding: $space-xs $space-sm;
-  border-radius: $radius-md;
-  background-color: rgba(255,255,255, .16);
+
+.selected {
+  color: $color-primary;
 }
