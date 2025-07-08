@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Input from '~/components/ui/input/Input.vue';
+import Select from '~/components/ui/select/Select.vue';
 import { QuestModalSetup, type QuestModalSetupEmit, type QuestModalSetupProps } from './QuestModal.setup';
 import Button from '~/components/ui/button/Button.vue';
 import TextArea from '~/components/ui/textarea/TextArea.vue';
@@ -12,8 +13,9 @@ import TextArea from '~/components/ui/textarea/TextArea.vue';
   <div class="quest-modal gap gap--page" v-if="setup.quest">
     <Input type="text" size="xl" label="Quete" v-model="setup.quest.title" placeholder="Ex : Nouvelle super quête "/>
     <TextArea type="text" label="Description" v-model="setup.quest.description" placeholder="Ex : Cette quete est fait pour apprendre une nouvelle chose, maintenir une habitude"/>
-    <Input type="text" label="Etapes de quête" v-model="setup.quest.domain" placeholder="Ajoutez une étape"/>
+    <!-- <Input type="text" label="Etapes de quête" v-model="setup.quest.domain" placeholder="Ajoutez une étape"/> -->
     <Input type="text" label="Categorie(s)" v-model="setup.quest.domain" placeholder="Ajoutez une catégorie"/>
+    <!-- <Select label="Categorie(s)" v-model="setup.quest.domain"/> -->
     <!-- <Input type="date" label="A réaliser pour" v-model="setup.quest.tag" placeholder="Ajoutez une date"/> -->
     <div class="quest-modal__actions">
       <div class="quest-modal__chrono" v-if="setup.quest.isRunning.value" :style="{ transform: `scale(4) rotate(${setup.quest.timeInterval.value * -6}deg)` }">

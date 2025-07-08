@@ -29,3 +29,9 @@
     }
   }
 }
+
+.tag {
+  padding: $space-xs $space-sm;
+  border-radius: $radius-md;
+  background-color: rgba(255,255,255, .16);
+}
