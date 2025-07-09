@@ -14,6 +14,17 @@
       border: 1px solid $color-primary;
     }
   }
+  
+  &--isFinished {
+    .quest-sticker__content {
+      text-decoration: line-through;
+      color: $color-success;
+    }
+    .quest-sticker__circle {
+      background-color: $color-success;
+      border: 1px solid $color-success;
+    }
+  }
 
   &__content {
     white-space: nowrap;
@@ -32,5 +43,12 @@
     width: calc($space-xl + $space-xs);
     height: calc($space-xl + $space-xs);
     transition: border .3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__xp {
+    color: $color-success;
   }
 } 

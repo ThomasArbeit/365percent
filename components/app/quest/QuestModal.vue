@@ -24,8 +24,8 @@ import TextArea from '~/components/ui/textarea/TextArea.vue';
       <p class="quest-modal__timer" v-if="setup.isSameQuestAsRunning">{{ setup.quest.formattedTime }}</p>
       <Button v-if="setup.quest.isNew" label="Creer la quête" @click="setup.addQuest()"/>
       <div class="quest-modal__buttons" v-else>
-        <Button v-if="!setup.quest.isRunning.value" fill-icon icon-left="Play" label="Lancer la quête" @click.stop="setup.isSameQuestAsRunning ? setup.quest.toggle() : setup.quest.startQuest()"/>
-        <Button v-if="setup.quest.isRunning.value" icon-left="CircleCheckBig" label="J'ai fini !" @click.stop="setup.quest.toggle()" variant="secondary"/>
+        <Button v-if="setup.quest.isRunning.value || setup.quest.timeInterval.value" icon-left="CircleCheckBig" label="J'ai fini !" @click.stop="setup.quest.finish()" variant="secondary"/>
+        <Button v-if="!setup.quest.isRunning.value" fill-icon icon-left="Play" label="Play !" @click.stop="setup.isSameQuestAsRunning ? setup.quest.toggle() : setup.quest.startQuest()"/>
         <Button v-if="setup.quest.isRunning.value" fill-icon icon-left="Pause" label="Pause" @click.stop="setup.quest.toggle()" variant="secondary"/>
       </div>
     </div>

@@ -5,6 +5,7 @@ import {ref} from 'vue';
 import type { QuestType } from "../types/QuestType";
 import { startQuest } from "~/utils/quest/startQuest";
 import { pauseQuest } from "~/utils/quest/pauseQuest";
+import { finishQuest } from "~/utils/quest/finishQuest";
 
 export default class QuestEntity extends BaseEntity<QuestType> {
   isRunning = ref(false)
@@ -38,6 +39,19 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   public set domain(v : string) {
     this.data.domain = v;
   }
+
+  public get status() : string {
+    return this.data.status ?? 'pending';
+  }
+
+  public get isFinished(): boolean {
+    return this.status === 'finished';
+  }
+
+  public get xpReward (): number {
+    return this.data.xp_reward ?? 0;
+  }
+  
 
   public get durationSeconds() : number{
     return this.data.duration_seconds ?? 0;
@@ -87,6 +101,17 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   async stop () {
     await pauseQuest(this.id, this.userId, this.timeInterval.value);
     this.data.duration_seconds = this.timeInterval.value;
+    this.isRunning.value = false
+    if (this.interval) {
+      clearInterval(this.interval)
+      this.interval = null
+    }
+  }
+
+  async finish () {
+    await finishQuest(this.id, this.userId, this.timeInterval.value);
+    this.data.duration_seconds = this.timeInterval.value;
+    this.data.status = 'finished';
     this.isRunning.value = false
     if (this.interval) {
       clearInterval(this.interval)

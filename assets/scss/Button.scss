@@ -37,7 +37,7 @@
   }
 
   &:active:not(.button--placeholder) {
-    transform: translateY($space-xs);
+    // transform: translateY($space-xs);
     border-bottom: unset;
   }
 }

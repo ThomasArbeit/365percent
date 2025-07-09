@@ -24,10 +24,14 @@ export class TextAreaSetup extends BaseSetup<TextAreaProps, TextAreaEmit> {
     this.textarea = textarea
   }
 
+  protected override onMounted(): void {
+    this.autoResize();
+  }
+
   onInput = (e: Event) => {
     this.autoResize();
     const target = e.target as HTMLTextAreaElement;
-    this.emits('update:modelValue', target.value)
+    this.emits?.('update:modelValue', target.value)
   }
 
   autoResize = () => {

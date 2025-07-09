@@ -6,7 +6,7 @@ export type QuestType = {
   description?: string,
   xp_reward?: number,
   duration_seconds?: number,
-  status?: number,
+  status?: string,
   scheduled_at?: string,
   completed_at?: string,
   created_at?: string,

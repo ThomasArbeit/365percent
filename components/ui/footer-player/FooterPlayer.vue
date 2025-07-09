@@ -17,7 +17,7 @@ const emits = defineEmits<FooterPlayerSetupEmits>()
         <p class="footer-player__time" v-show="setup.playingQuest.quest?.timeInterval.value !== 0">
           {{ setup.playingQuest.quest?.formattedTime }}
         </p>
-        <Icon :name="'CircleCheckBig'" :size="20" stroke="white" :stroke-width="2"/>
+        <Icon :name="'CircleCheckBig'" :size="20" stroke="white" :stroke-width="2" @click="setup.playingQuest.quest?.finish()"/>
         <Icon :name="setup.playingQuest.quest?.isRunning.value ? 'Pause' : 'Play'" :size="20" stroke="white" fill="white" style="stroke-linejoin:round;" @click.stop="setup.playingQuest.quest?.toggle()"/>
       </div>
     </template>
