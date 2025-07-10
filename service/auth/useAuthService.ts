@@ -3,20 +3,21 @@ import { ref, type Ref } from 'vue'
 import type { User } from '@supabase/supabase-js'
 import { getUserById } from '~/utils/user/getUserById'
 import { loginWithEmail } from '~/utils/auth/login'
+import BaseUserEntity from '~/models/entities/BaseUser'
 
 export default class useAuthService {
   private static instance: useAuthService | null = null
 
   public auth: Ref<User | null> = ref(null)
-  public user: Ref<any | null> = ref(null)
+  public user: BaseUserEntity | undefined;
   public isLoading: Ref<boolean> = ref(false)  // nouvel état de chargement
 
   get userId () {
-    return this.user.value.id;
+    return this.user?.id;
   }
 
   get userData () {
-    return this.user.value;
+    return this.user;
   }
 
   static getInstance(): useAuthService {
@@ -33,7 +34,7 @@ export default class useAuthService {
 
     if (error || !user) {
       this.auth.value = null
-      this.user.value = null
+      this.user = undefined
       this.isLoading.value = false
       return
     }
@@ -42,7 +43,7 @@ export default class useAuthService {
 
     const { data: userData, error: userError } = await getUserById(user.id)
     if (!userError) {
-      this.user.value = userData
+      this.user = new BaseUserEntity(userData);
     }
     this.isLoading.value = false
   }
@@ -52,7 +53,7 @@ export default class useAuthService {
     this.auth.value = userAuth.user
     if (userAuth.user?.id) {
       const { data: userData } = await getUserById(userAuth.user.id)
-      this.user.value = userData
+      this.user = new BaseUserEntity(userData)
     }
   }
 

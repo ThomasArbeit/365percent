@@ -6,12 +6,16 @@ import type { QuestType } from "../types/QuestType";
 import { startQuest } from "~/utils/quest/startQuest";
 import { pauseQuest } from "~/utils/quest/pauseQuest";
 import { finishQuest } from "~/utils/quest/finishQuest";
+import useFinishedQuestsTodayService from "~/service/quest/useFinishedQuestsTodayService";
+import useAuthService from "~/service/auth/useAuthService";
+import { addXPToUser } from "~/utils/user/addXpToUser";
 
 export default class QuestEntity extends BaseEntity<QuestType> {
   isRunning = ref(false)
   interval: ReturnType<typeof setInterval> | null = null
   wasRunning = ref(false);
   timeInterval = ref(0);
+  userId = useAuthService.getInstance().user?.id;
 
   constructor(quest?: QuestType) {
     super();
@@ -64,7 +68,8 @@ export default class QuestEntity extends BaseEntity<QuestType> {
     return formatTime(this.timeInterval.value);
   }
 
-  async addQuestAsync () { 
+  async addQuestAsync () {
+    if(!this.userId) return;
     const response = await addQuest(this.data, this.userId);
     this.id = response.data?.[0].id;
     return response.data?.[0];
@@ -77,6 +82,7 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   }
   
   async toggle () {
+    if(!this.userId) return;
     if (this.isRunning.value) {
       await this.stop()
     } else {
@@ -99,6 +105,7 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   }
   
   async stop () {
+    if(!this.userId) return;
     await pauseQuest(this.id, this.userId, this.timeInterval.value);
     this.data.duration_seconds = this.timeInterval.value;
     this.isRunning.value = false
@@ -109,14 +116,20 @@ export default class QuestEntity extends BaseEntity<QuestType> {
   }
 
   async finish () {
+    if(!this.userId) return;
     await finishQuest(this.id, this.userId, this.timeInterval.value);
+    await addXPToUser(this.userId, this.timeInterval.value);
     this.data.duration_seconds = this.timeInterval.value;
     this.data.status = 'finished';
+    this.data.xp_reward = this.timeInterval.value;
+    useFinishedQuestsTodayService.getInstance().addFinishedQuest(this.data);
+    useAuthService.getInstance().user?.addXpToTotal(this.timeInterval.value);
     this.isRunning.value = false
     if (this.interval) {
       clearInterval(this.interval)
       this.interval = null
     }
+    this.router.push({name: 'Questfinish'});
   }
 
   clearInterval() {

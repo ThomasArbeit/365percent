@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import Card from '~/components/ui/card/Card.vue';
 import Modal from '~/components/ui/modal/Modal.vue';
 import Section from '~/components/ui/section/Section.vue';
 import FooterPlayer from '~/components/ui/footer-player/FooterPlayer.vue';
@@ -9,12 +8,16 @@ import Button from '~/components/ui/button/Button.vue';
 import IndexSetup from './index.setup';
 import QuestSticker from '~/components/app/quest/QuestSticker.vue';
 import DashboardCard from '~/components/app/dashboard/DashboardCard.vue';
+import LevelBar from '~/components/ui/level-bar/LevelBar.vue';
 const setup = new IndexSetup();
 </script>
 
 <template>
-  <div class="gap gap--page" v-if="setup.self.user.value">
-    <UserTag v-bind="setup.self.user.value"/>
+  <div class="gap gap--page" v-if="setup.self.user">
+    <div class="gap gap--section">
+      <UserTag :user="setup.self.user"/>
+      <LevelBar v-bind="setup.self.user.progress"/>
+    </div>
     <Section title="Aujourd'hui">
       <DashboardCard></DashboardCard>
     </Section>

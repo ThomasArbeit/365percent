@@ -1,0 +1,40 @@
+@use 'variables' as *;
+
+.quest-finish {
+  position: relative;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+  padding-bottom: unset !important;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: $space-sm;
+  }
+
+  &__header-title {
+    font-size: $font-size-lg;
+  }
+
+  &__header-xp {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+  }
+
+  &__actions {
+    position: absolute;
+    bottom: $space-3xl;
+    left: 0;
+    right: 0;
+    display: flex;
+    .button {
+      flex: 1;
+    }
+  }
+
+}

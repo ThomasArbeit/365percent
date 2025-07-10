@@ -28,7 +28,7 @@ const setup = new QuestStickerSetup(props, emits);
       @click.stop="setup.isSameQuestAsRunning ? setup.quest.toggle() : setup.quest.startQuest()"/>
 
       <p class="quest-sticker__xp" v-else>
-        + {{ setup.quest.xpReward }} xp
+        +{{ setup.quest.xpReward }} xp
       </p>
     </div>
   </Sticker>

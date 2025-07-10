@@ -5,8 +5,7 @@ type RawEntity = {id?: string};
 
 export class BaseEntity<T extends RawEntity> {
   protected data = reactive({}) as T;
-  protected self = useAuthService.getInstance();
-
+  router = useRouter();
 
   get id (): T['id'] { return this.data.id};
   
@@ -15,10 +14,6 @@ export class BaseEntity<T extends RawEntity> {
   }
   
   get isNew () { return !this.id; }
-
-  get userId() {
-    return this.self.userData.id;
-  }
 
   constructor(initialData?: T) {
     if (initialData) this.assignData(initialData);

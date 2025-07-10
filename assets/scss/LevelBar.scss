@@ -1,0 +1,34 @@
+@use 'variables' as *;
+
+.level-bar {
+  display: flex;
+  flex-direction: column;
+  gap: $space-sm;
+
+  &__text-section {
+    display: flex;
+    justify-content: space-between;
+    color: $text-color-secondary;
+    font-size: $font-size-sm;
+  }
+
+  &__bar-section {
+    position: relative;
+  }
+
+  &__bar-fixed {
+    width: 100%;
+    height: calc($space-xs *1.5);
+    border-radius: $radius-full;
+    background: $color-surface;
+  }
+  
+  &__bar-xp {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: $radius-full;
+    background: $color-primary;
+    height: calc($space-xs *1.5);
+  }
+}

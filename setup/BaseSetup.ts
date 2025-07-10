@@ -6,23 +6,23 @@ declare global {
 }
 
 export class BaseSetup<P, E> {
-props = {} as P;
-emits?: E;
-self = useAuthService.getInstance();
-playingQuest = usePlayingQuestService.getInstance();
-public router = useRouter();
+  props = {} as P;
+  emits?: E;
+  self = useAuthService.getInstance();
+  playingQuest = usePlayingQuestService.getInstance();
+  public router = useRouter();
 
-constructor(props?: P, emits?: E) {
-  this.props = props ?? {} as P;
-  this.emits = emits;
-  this.initHooks();
-}
+  constructor(props?: P, emits?: E) {
+    this.props = props ?? {} as P;
+    this.emits = emits;
+    this.initHooks();
+  }
 
-protected initHooks() {
-  onMounted(() => this.onMounted());
-  onUnmounted(() => this.onUnmounted());
-}
+  protected initHooks() {
+    onMounted(() => this.onMounted());
+    onUnmounted(() => this.onUnmounted());
+  }
 
-protected onMounted() {};
-protected onUnmounted() {};
+  protected onMounted() {};
+  protected onUnmounted() {};
 }

@@ -27,6 +27,10 @@ export default class usePlayingQuestService {
   clearPlayingQuest () {
     this.quest?.clearInterval();
     this.quest?.stop();
+    this.reset();
+  }
+  
+  reset () {
     this.quest = undefined;
     this.questId.value = undefined;
     this.hasQuest.value = false;

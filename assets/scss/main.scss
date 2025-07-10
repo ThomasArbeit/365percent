@@ -1,5 +1,6 @@
 @use 'variables' as *;
 @use 'Button.scss';
+@use 'LevelBar.scss';
 @use 'Tag.scss';
 @use 'Card.scss';
 @use 'Input.scss';
@@ -12,6 +13,7 @@
 @use 'FooterPlayer.scss';
 @use 'Timer.scss';
 @use 'DashboardCard.scss';
+@use 'QuestFinish.scss';
 
 * {
   padding: unset;
@@ -28,7 +30,7 @@ body {
   background-color: $background-color;
   color: $text-color;
   padding: 20px;
-  padding-bottom: 124px;
+  // padding-bottom: 124px;
 }
 
 .gap {
@@ -37,5 +39,10 @@ body {
   justify-content: flex-start;
   &--page {
     gap: $space-xl;
+    padding-bottom: 96px;
+  }
+
+  &--section {
+    gap: $space-md;
   }
 }

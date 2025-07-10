@@ -17,8 +17,8 @@
   // background-color: $color-secondary;
   border-top-left-radius: $space-xl;
   border-top-right-radius: $space-xl;
-  max-height:90vh;
-  height:90vh;
+  max-height:90dvh;
+  height:90dvh;
   overflow: auto;
   transition: transform 0.3s ease;
   will-change: transform;
@@ -28,7 +28,7 @@
   padding: $space-lg;
   padding-bottom: calc($space-3xl + $space-3xl);
   min-height: 100%;
-  max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
 
   &__closer {
