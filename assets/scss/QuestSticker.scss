@@ -29,6 +29,7 @@
   &__content {
     white-space: nowrap;
     overflow: hidden;
+    text-overflow: ellipsis;
     display: flex;
     flex: 1;
     color: $text-color-secondary;
@@ -42,6 +43,7 @@
     background-color: rgba(255,255,255,.08);
     width: calc($space-xl + $space-xs);
     height: calc($space-xl + $space-xs);
+    min-width:calc($space-xl + $space-xs);
     transition: border .3s ease-in-out;
     display: flex;
     align-items: center;

@@ -6,6 +6,7 @@ export async function addQuest (quest: QuestType, userId: string) {
   .from('quests')
   .insert({
     ...quest,
+    scheduled_at: new Date().toISOString(),
     user_id: userId,
   })
   .select('*')
